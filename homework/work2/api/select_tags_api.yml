@@ -1,0 +1,10 @@
+name: "查询标签接口"
+base_url: ${ENV(URL)}
+
+request:
+  method: "GET"
+  url: "/cgi-bin/tags/get"
+  params:
+    access_token: $access_token
+validate:
+  - eq: ["status_code",200]

@@ -1,0 +1,17 @@
+#1、用httprunner 模拟 https://www.baidu.com , 把响应信息通过httprunner进行截取
+- config:
+    name: "作业一：截取响应信息"
+    base_url: ${ENV(HOSTS)}
+    export:
+      - title
+
+- test:
+    name: "子类"
+    request:
+      method: "GET"
+      url: "/"
+    extract:
+      title: "<title>(.+?)</title>"
+    validate:
+      - eq: ["status_code",200]
+

@@ -1,0 +1,27 @@
+- config:
+    name: "获取标签下粉丝列表接口"
+    setup_hooks:
+      - ${setup_hook_testcase(获取标签下粉丝列表接口)}
+    teardown_hooks:
+      - ${teardown_hook_testcase(获取标签下粉丝列表接口)}
+    export:
+      - access_token
+      - count
+
+
+- test:
+    name: "执行获取access_token接口"
+    api: homework/work2/api/get_access_token_api.yml
+    extract:
+      access_token: content.access_token
+      expires_in: content.expires_in
+    validate:
+      - eq: [$expires_in,7200]
+
+- test:
+    name: "执行获取标签下粉丝列表接口"
+    api: homework/work2/api/get_tag_user_api.yml
+    extract:
+      count: content.count
+    validate:
+      - eq: [$count,0]

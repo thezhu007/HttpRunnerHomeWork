@@ -1,0 +1,28 @@
+- config:
+    name: "验证删除标签接口"
+    export:
+      - access_token
+      - errcode
+    setup_hooks:
+      - ${setup_hook_testcase(验证删除标签接口)}
+    teardown_hooks:
+      - ${teardown_hook_testcase(验证删除标签接口)}
+
+- test:
+    name: "执行获取access_token接口"
+    api: homework/work2/api/get_access_token_api.yml
+    extract:
+      access_token: content.access_token
+      expires_in: content.expires_in
+    validate:
+      - eq: [$expires_in,7200]
+
+- test:
+    name: "执行删除标签接口"
+    api: homework/work2/api/delete_tags_api.yml
+    extract:
+      errcode: content.errcode
+    vaidate:
+      - eq: [$errcode,0]
+
+

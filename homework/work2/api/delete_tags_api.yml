@@ -1,0 +1,10 @@
+name: "删除标签接口"
+base_url: ${ENV(URL)}
+request:
+  method: "POST"
+  url: "/cgi-bin/tags/delete"
+  params:
+    access_token: $access_token
+  json: {   "tag":{        "id" : "${ENV(tag_id)}"   } }
+validate:
+  - eq: ["status_code",200]

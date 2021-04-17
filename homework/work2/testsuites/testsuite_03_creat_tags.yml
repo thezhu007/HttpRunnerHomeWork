@@ -1,0 +1,11 @@
+# 3、用debugtalk.py实现创建标签的参数化设置
+config:
+  name: "创建标签参数化"
+
+testcases:
+  参数化设置创建标签:
+    testcase: homework/work2/testcases/testcase_02_creat_tags.yml
+    parameters:
+      tag_name: ${creat_tags()}
+
+

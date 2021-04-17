@@ -1,0 +1,10 @@
+name: "获取标签下粉丝列表接口"
+base_url: ${ENV(URL)}
+request:
+  method: "POST"
+  url: "/cgi-bin/user/tag/get"
+  params:
+    access_token: $access_token
+  json: {   "tagid" : "${ENV(tagid)}",   "next_openid":"" }
+validate:
+  - eq: ["status_code",200]

@@ -1,0 +1,19 @@
+#2、用httprunner讲解的分层方式把微信公众平台接口 创建标签、删除标签、获取公众号下粉丝信息进行用例设计并录入（写5条）
+- config:
+    name: "验证获取access_token接口"
+    export:
+      - access_token
+    setup_hooks:
+      - ${setup_hook_testcase(验证获取access_token接口)}
+    teardown_hooks:
+      - ${teardown_hook_testcase(验证获取access_token接口)}
+
+
+- test:
+    name: "执行获取access_token接口"
+    api: homework/work2/api/get_access_token_api.yml
+    extract:
+      access_token: content.access_token
+      expires_in: content.expires_in
+    validate:
+      - eq: [$expires_in,7200]
