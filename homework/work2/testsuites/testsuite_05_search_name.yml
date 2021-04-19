@@ -1,0 +1,10 @@
+#2、利用httprunner实现使用debugtalk.py进行百度搜索随机姓名5个 （要用使用faker）
+config:
+  name: "利用faker搜索5个随机名称"
+
+testcases:
+  随机搜索名称:
+    testcase: homework/work2/baidu_search/search_name_faker.yml
+    parameters:
+      baidu_search_word: ${get_faker_name(5)}
+

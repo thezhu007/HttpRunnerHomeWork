@@ -20,7 +20,7 @@
     extract:
         tag_name: content.tag.name
     validate:
-        - eq: ["status_code",200]
+        - eq: [$tag_name,$validate_tag_name]
 
 
 

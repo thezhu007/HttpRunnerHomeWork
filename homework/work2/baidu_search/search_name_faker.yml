@@ -1,0 +1,12 @@
+- config:
+    name: "验证百度搜索接口"
+    export:
+      - title
+
+- test:
+    name: "执行百度搜索接口"
+    api: homework/work2/api/baidu_search_api.yml
+    extract:
+      title: "<title>(.+?)</title>"
+    validate:
+      - eq: ["status_code",200]
